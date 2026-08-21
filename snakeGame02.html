@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,7 @@
         /* ========== 背景主题 ========== */
         /* 主题1：深色暗夜 */
         body.theme-dark {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #1a1a2f 0%, #16213e 50%, #0f3460 100%);
         }
 
         /* 主题2：浅色清新 */
@@ -282,6 +283,7 @@
         }
     </style>
 </head>
+
 <body class="theme-dark">
     <div class="game-container">
         <!-- 游戏标题 -->
@@ -332,7 +334,8 @@
 
         <!-- 操作说明 -->
         <div class="instructions">
-            <div>🎮 使用 <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> 或 <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> 控制方向</div>
+            <div>🎮 使用 <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> 或 <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd>
+                <kbd>D</kbd> 控制方向</div>
             <div>⏸️ 按 <kbd>空格</kbd> 暂停/继续游戏</div>
         </div>
     </div>
@@ -456,9 +459,9 @@
             // 计算蛇头新位置
             const head = { ...snake[0] };
             switch (direction) {
-                case 'up':    head.y--; break;
-                case 'down':  head.y++; break;
-                case 'left':  head.x--; break;
+                case 'up': head.y--; break;
+                case 'down': head.y++; break;
+                case 'left': head.x--; break;
                 case 'right': head.x++; break;
             }
 
@@ -843,4 +846,5 @@
         showOverlay('准备就绪', '按"开始"按钮开始游戏');
     </script>
 </body>
+
 </html>
