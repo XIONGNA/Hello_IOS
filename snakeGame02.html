@@ -335,7 +335,8 @@
         <!-- 操作说明 -->
         <div class="instructions">
             <div>🎮 使用 <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> 或 <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd>
-                <kbd>D</kbd> 控制方向</div>
+                <kbd>D</kbd> 控制方向
+            </div>
             <div>⏸️ 按 <kbd>空格</kbd> 暂停/继续游戏</div>
         </div>
     </div>
@@ -526,12 +527,30 @@
 
         // ========== 绘制 ==========
 
+        // 各主题对应的画布背景色（与 body 主题渐变协调）
+        const THEME_CANVAS_COLORS = {
+            'theme-dark': '#1a1a2f',
+            'theme-light': '#e8f4f8',
+            'theme-gradient': '#764ba2',
+            'theme-starry': '#090A0F'
+        };
+
+        /**
+         * 根据当前主题获取画布背景色
+         */
+        function getCanvasBackground() {
+            for (const [cls, color] of Object.entries(THEME_CANVAS_COLORS)) {
+                if (document.body.classList.contains(cls)) return color;
+            }
+            return THEME_CANVAS_COLORS['theme-dark'];
+        }
+
         /**
          * 绘制整个游戏画面
          */
         function draw() {
-            // 清空画布
-            ctx.fillStyle = '#1a1a2e';
+            // 清空画布（背景色跟随当前主题）
+            ctx.fillStyle = getCanvasBackground();
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             // 绘制网格（可选的淡色网格线）
@@ -837,6 +856,8 @@
                 // 更新按钮激活状态
                 themeButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
+                // 画布背景色立即跟随主题重绘
+                draw();
             });
         });
 
